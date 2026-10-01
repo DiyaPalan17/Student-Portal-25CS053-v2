@@ -1,3 +1,146 @@
 [
-{"id":1,"name":"Diya Palan","course":"B.Tech Computer Engineering","year":"2nd Year","status":"Active"},{"id":2,"name":"Aarav Shah","course":"B.Tech IT","year":"2nd Year","status":"Active"},{"id":3,"name":"Meera Patel","course":"BCA","year":"1st Year","status":"Active"},{"id":4,"name":"Riya Desai","course":"B.Tech Computer Engineering","year":"3rd Year","status":"Active"},{"id":5,"name":"Karan Joshi","course":"B.Tech IT","year":"4th Year","status":"Active"},{"id":6,"name":"Ishita Mehta","course":"MCA","year":"1st Year","status":"Active"},{"id":7,"name":"Dev Trivedi","course":"B.Tech Computer Engineering","year":"2nd Year","status":"Active"},{"id":8,"name":"Anaya Shah","course":"BCA","year":"3rd Year","status":"Active"},{"id":9,"name":"Yash Parmar","course":"B.Tech IT","year":"3rd Year","status":"Active"},{"id":10,"name":"Krisha Patel","course":"B.Tech Computer Engineering","year":"4th Year","status":"Active"},{"id":11,"name":"Harsh Vora","course":"MCA","year":"2nd Year","status":"Active"},{"id":12,"name":"Mahi Dave","course":"B.Tech IT","year":"1st Year","status":"Active"},{"id":13,"name":"Ved Shah","course":"B.Tech Computer Engineering","year":"3rd Year","status":"Active"},{"id":14,"name":"Nisha Joshi","course":"BCA","year":"2nd Year","status":"Active"},{"id":15,"name":"Rohan Patel","course":"B.Tech IT","year":"4th Year","status":"Active"}
+  {
+    "id": 1,
+    "name": "Diya Palan",
+    "email": "25cs053@charusat.edu.in",
+    "course": "B.Tech Computer Engineering",
+    "year": "2nd Year",
+    "division": "CE-A",
+    "attendance": "94%"
+  },
+  {
+    "id": 2,
+    "name": "Aarav Shah",
+    "email": "aarav.shah@charusat.edu.in",
+    "course": "B.Tech IT",
+    "year": "2nd Year",
+    "division": "IT-A",
+    "attendance": "89%"
+  },
+  {
+    "id": 3,
+    "name": "Meera Patel",
+    "email": "meera.patel@charusat.edu.in",
+    "course": "BCA",
+    "year": "1st Year",
+    "division": "BCA-1",
+    "attendance": "91%"
+  },
+  {
+    "id": 4,
+    "name": "Riya Desai",
+    "email": "riya.desai@charusat.edu.in",
+    "course": "B.Tech Computer Engineering",
+    "year": "3rd Year",
+    "division": "CE-B",
+    "attendance": "86%"
+  },
+  {
+    "id": 5,
+    "name": "Karan Joshi",
+    "email": "karan.joshi@charusat.edu.in",
+    "course": "B.Tech IT",
+    "year": "4th Year",
+    "division": "IT-B",
+    "attendance": "78%"
+  },
+  {
+    "id": 6,
+    "name": "Ishita Mehta",
+    "email": "ishita.mehta@charusat.edu.in",
+    "course": "MCA",
+    "year": "1st Year",
+    "division": "MCA-A",
+    "attendance": "95%"
+  },
+  {
+    "id": 7,
+    "name": "Dev Trivedi",
+    "email": "dev.trivedi@charusat.edu.in",
+    "course": "B.Tech Computer Engineering",
+    "year": "2nd Year",
+    "division": "CE-A",
+    "attendance": "72%"
+  },
+  {
+    "id": 8,
+    "name": "Ananya Sharma",
+    "email": "ananya.sharma@charusat.edu.in",
+    "course": "BCA",
+    "year": "3rd Year",
+    "division": "BCA-2",
+    "attendance": "88%"
+  },
+  {
+    "id": 9,
+    "name": "Yash Parmar",
+    "email": "yash.parmar@charusat.edu.in",
+    "course": "B.Tech IT",
+    "year": "3rd Year",
+    "division": "IT-A",
+    "attendance": "82%"
+  },
+  {
+    "id": 10,
+    "name": "Krisha Patel",
+    "email": "krisha.patel@charusat.edu.in",
+    "course": "B.Tech Computer Engineering",
+    "year": "4th Year",
+    "division": "CE-B",
+    "attendance": "96%"
+  },
+  {
+    "id": 11,
+    "name": "Harsh Vora",
+    "email": "harsh.vora@charusat.edu.in",
+    "course": "MCA",
+    "year": "2nd Year",
+    "division": "MCA-B",
+    "attendance": "68%"
+  },
+  {
+    "id": 12,
+    "name": "Mahi Dave",
+    "email": "mahi.dave@charusat.edu.in",
+    "course": "B.Tech IT",
+    "year": "1st Year",
+    "division": "IT-A",
+    "attendance": "93%"
+  },
+  {
+    "id": 13,
+    "name": "Ved Shah",
+    "email": "ved.shah@charusat.edu.in",
+    "course": "B.Tech Computer Engineering",
+    "year": "3rd Year",
+    "division": "CE-A",
+    "attendance": "85%"
+  },
+  {
+    "id": 14,
+    "name": "Nisha Joshi",
+    "email": "nisha.joshi@charusat.edu.in",
+    "course": "BCA",
+    "year": "2nd Year",
+    "division": "BCA-1",
+    "attendance": "76%"
+  },
+  {
+    "id": 15,
+    "name": "Rohan Patel",
+    "email": "rohan.patel@charusat.edu.in",
+    "course": "B.Tech IT",
+    "year": "4th Year",
+    "division": "IT-B",
+    "attendance": "84%"
+  },
+  {
+    "id": 16,
+    "name": "Pooja Trivedi",
+    "email": "pooja.trivedi@charusat.edu.in",
+    "course": "MCA",
+    "year": "2nd Year",
+    "division": "MCA-A",
+    "attendance": "90%"
+  }
 ]

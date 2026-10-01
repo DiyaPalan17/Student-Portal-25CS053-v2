@@ -1,1 +1,313 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Student Hub | Your Campus, Simplified</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">🎓</span><span>Student Hub</span></a><div class="nav-actions"><button id="themeBtn" class="icon-btn" aria-label="Toggle theme">🌙</button><a class="btn btn-secondary" href="login.html">Login</a><a class="btn btn-primary" href="registration.html">Register</a></div></div></header><main><section class="hero"><div class="container hero-grid"><div><span class="eyebrow">CHARUSAT Student Portal</span><h1>Everything you need for <span>student life.</span></h1><p>Student Hub brings attendance, assignments, events, fees, results, timetable and your profile into one simple, interactive portal.</p><div class="actions"><a class="btn btn-primary" href="login.html">Login to Student Hub →</a><a class="btn btn-secondary" href="registration.html">Create account</a></div></div><div class="hero-card"><h2>What can you do?</h2><div class="feature-list"><div class="feature"><span>📊</span><div><b>Track academics</b><small>Attendance, results and timetable in one place.</small></div></div><div class="feature"><span>📝</span><div><b>Manage work</b><small>Find assignments and important deadlines.</small></div></div><div class="feature"><span>📅</span><div><b>Stay updated</b><small>Discover campus events and notices.</small></div></div><div class="feature"><span>🌙</span><div><b>Your preferred theme</b><small>Lavender light mode or comfortable dark mode.</small></div></div></div></div></div></section><section class="section"><div class="container"><h2 class="section-title">Explore before you log in</h2><p class="section-sub">A quick interactive preview of the portal.</p><div class="slider"><article class="slide active"><h3>One portal, every student need.</h3><p>Use the hamburger menu after login to move between all modules.</p></article><article class="slide"><h3>Built with JavaScript.</h3><p>DOM manipulation, events, Fetch API, validation, search, sorting and pagination.</p></article><article class="slide"><h3>Designed for everyone.</h3><p>Keyboard-friendly controls, labels, ARIA states and responsive layouts.</p></article><div class="slide-controls"><button id="prevSlide" aria-label="Previous slide">‹</button><button id="nextSlide" aria-label="Next slide">›</button></div></div></div></section><section class="section"><div class="container"><h2 class="section-title">Frequently Asked Questions</h2><p class="section-sub">These questions are loaded dynamically from <code>faqs.json</code> using Fetch API.</p><div id="faqList"></div></div></section></main><footer class="footer">Student Hub • Interactive Web Development Project • <span id="year"></span></footer><div id="toast" class="toast" role="status"></div><script>document.getElementById('year').textContent=new Date().getFullYear()</script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Hub - Your one place to manage attendance, assignments, events, results, timetable, and campus academic life.">
+  <title>Student Hub | Your Campus Life, Simplified</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Student Hub Home">
+        <span class="brand-icon">🎓</span>
+        <span class="brand-text">Student Hub</span>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#features">Features</a></li>
+          <li><a class="nav-link" href="#preview">Preview</a></li>
+          <li><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+          🌙
+        </button>
+        <a class="btn btn-secondary" href="login.html">Login</a>
+        <a class="btn btn-primary" href="register.html">Create Account</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-bg-shapes" aria-hidden="true">
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="section-eyebrow">CHARUSAT Student Academic Portal</span>
+          <h1 class="hero-title">
+            Your one place to manage your <span class="gradient-text">academic life.</span>
+          </h1>
+          <p class="hero-subtitle">
+            Student Hub unites attendance monitoring, assignment management, campus events, examination results, fee tracking, class timetables, and learning resources into one cohesive, interactive portal.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="login.html">
+              <span>Login to Student Hub</span>
+              <span>→</span>
+            </a>
+            <a class="btn btn-secondary btn-lg" href="register.html">
+              <span>Create Account</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div style="display:flex; justify-content:space-between; align-items:center">
+            <h2 style="font-size:1.3rem; font-weight:800">What Can You Do?</h2>
+            <span class="badge badge-primary">Interactive Modules</span>
+          </div>
+
+          <div class="feature-summary-list">
+            <div class="feature-summary-item">
+              <span class="feature-summary-icon">📊</span>
+              <div>
+                <strong>Track Attendance</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0">Subject-wise percentage tracking with risk alerts.</p>
+              </div>
+            </div>
+
+            <div class="feature-summary-item">
+              <span class="feature-summary-icon">📝</span>
+              <div>
+                <strong>Manage Assignments</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0">Track upcoming deadlines, submissions, and rubrics.</p>
+              </div>
+            </div>
+
+            <div class="feature-summary-item">
+              <span class="feature-summary-icon">📅</span>
+              <div>
+                <strong>Discover Campus Events</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0">Dynamic activities fetched live from JSON data.</p>
+              </div>
+            </div>
+
+            <div class="feature-summary-item">
+              <span class="feature-summary-icon">🎨</span>
+              <div>
+                <strong>Persistent Lavender Theme</strong>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin:0">Seamless Light & Dark mode stored in localStorage.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Information / Features Grid -->
+    <section class="section" id="features" style="background:var(--surface-variant)">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Comprehensive Portal</span>
+          <h2 class="section-title">Everything Built For Students</h2>
+          <p class="section-subtitle">
+            Explore 8 core academic areas designed to streamline your daily college journey.
+          </p>
+        </div>
+
+        <div class="grid grid-4">
+          <!-- 1. Attendance -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">📊</div>
+            <h3 class="feature-card-title">Attendance Tracking</h3>
+            <p class="feature-card-desc">
+              Monitor attendance across every lecture and lab session. Get notified before falling below the 75% threshold.
+            </p>
+          </article>
+
+          <!-- 2. Assignments -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">📝</div>
+            <h3 class="feature-card-title">Assignments</h3>
+            <p class="feature-card-desc">
+              Review assignment briefs, deadlines, and submission statuses. Filter by subject and open details in modals.
+            </p>
+          </article>
+
+          <!-- 3. Events -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">📅</div>
+            <h3 class="feature-card-title">Campus Events</h3>
+            <p class="feature-card-desc">
+              Browse technical symposiums, workshops, and sports matches dynamically loaded via Fetch API.
+            </p>
+          </article>
+
+          <!-- 4. Results -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">🎯</div>
+            <h3 class="feature-card-title">Results & Grades</h3>
+            <p class="feature-card-desc">
+              Inspect semester GPA, total credit points, subject grades, and backlog summaries in real-time.
+            </p>
+          </article>
+
+          <!-- 5. Fees -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">💳</div>
+            <h3 class="feature-card-title">Fee Management</h3>
+            <p class="feature-card-desc">
+              Check semester tuition fees, installment due dates, paid balances, and generate instant demo receipts.
+            </p>
+          </article>
+
+          <!-- 6. Timetable -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">🗓️</div>
+            <h3 class="feature-card-title">Weekly Timetable</h3>
+            <p class="feature-card-desc">
+              Interactive weekday schedule with class timings, classroom numbers, and faculty details.
+            </p>
+          </article>
+
+          <!-- 7. Profile -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">👤</div>
+            <h3 class="feature-card-title">Student Profile</h3>
+            <p class="feature-card-desc">
+              Personal student profile with editable contact details and academic bios saved to localStorage.
+            </p>
+          </article>
+
+          <!-- 8. Learning -->
+          <article class="card feature-card">
+            <div class="feature-card-icon">📚</div>
+            <h3 class="feature-card-title">Learning Resources</h3>
+            <p class="feature-card-desc">
+              Curated links to Coursera, MDN documentation, GitHub packs, reference sheets, and interactive tools.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Preview Slider -->
+    <section class="section" id="preview">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Interactive Highlights</span>
+          <h2 class="section-title">Experience the Student Hub Flow</h2>
+          <p class="section-subtitle">
+            An automated and interactive content slider demonstrating the key architectural highlights.
+          </p>
+        </div>
+
+        <div class="slider-container" role="region" aria-label="Portal highlights slider">
+          <div class="slider-wrapper">
+            <!-- Slide 1 -->
+            <article class="slide active">
+              <span class="slide-tag">Unified Architecture</span>
+              <h3 class="slide-title">One Connected Student Portal</h3>
+              <p class="slide-description">
+                From landing page to registration, login, and the home dashboard, every module is linked with responsive hamburger drawer navigation.
+              </p>
+            </article>
+
+            <!-- Slide 2 -->
+            <article class="slide">
+              <span class="slide-tag">Pure Vanilla JavaScript</span>
+              <h3 class="slide-title">Fetch API & Dynamic DOM Rendering</h3>
+              <p class="slide-description">
+                Data for events, students, and FAQs is queried from JSON files using the native Fetch API, featuring live search, filtering, and pagination.
+              </p>
+            </article>
+
+            <!-- Slide 3 -->
+            <article class="slide">
+              <span class="slide-tag">Personalized Experience</span>
+              <h3 class="slide-title">Lavender Theme & localStorage Memory</h3>
+              <p class="slide-description">
+                Your selected Light or Dark mode, registered profile information, and session states are persistently stored in browser storage.
+              </p>
+            </article>
+          </div>
+
+          <!-- Slider Controls -->
+          <div class="slider-dots" aria-label="Slide indicators"></div>
+
+          <div class="slider-nav">
+            <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
+            <button class="slider-btn slider-next" aria-label="Next slide">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section (Dynamic Fetch API) -->
+    <section class="section" id="faq" style="background:var(--surface-variant)">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-eyebrow">Questions & Answers</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            The questions below are loaded dynamically from <code>data/faqs.json</code> via JavaScript Fetch API.
+          </p>
+        </div>
+
+        <div id="faqAccordion" class="faq-accordion" aria-live="polite">
+          <!-- Populated dynamically by js/faq.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:12px">
+            <span class="brand-icon">🎓</span>
+            <span class="brand-text">Student Hub</span>
+          </div>
+          <p style="color:var(--text-muted); max-width:320px">
+            CHARUSAT Academic Student Portal demonstration built with semantic HTML5, modern CSS3 variables, and vanilla ES6 JavaScript.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-weight:750; margin-bottom:12px">Quick Navigation</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px">
+            <li><a href="index.html" class="nav-link" style="padding:0">Landing Page</a></li>
+            <li><a href="login.html" class="nav-link" style="padding:0">Student Login</a></li>
+            <li><a href="register.html" class="nav-link" style="padding:0">Create Account</a></li>
+            <li><a href="#faq" class="nav-link" style="padding:0">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="font-weight:750; margin-bottom:12px">Student Modules</h4>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:8px">
+            <li><a href="login.html" class="nav-link" style="padding:0">Home Dashboard</a></li>
+            <li><a href="login.html" class="nav-link" style="padding:0">Subject Attendance</a></li>
+            <li><a href="login.html" class="nav-link" style="padding:0">Campus Events</a></li>
+            <li><a href="login.html" class="nav-link" style="padding:0">Student Directory</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          Student Hub &bull; Web Development Academic Project &bull; &copy; <span class="current-year"></span> All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

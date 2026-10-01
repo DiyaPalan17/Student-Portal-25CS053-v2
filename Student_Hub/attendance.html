@@ -1,1 +1,315 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Attendance | Student Hub</title><link rel="stylesheet" href="style.css"></head><body data-protected="true"><div id="siteHeader"></div><div class="app-shell"><aside class="sidebar" id="sidebar"></aside><main class="main"><div class="container"><div class="page-head"><div><span class="eyebrow">Academics</span><h1>Attendance</h1><p class="section-sub">Monitor your attendance by subject.</p></div></div><div class="grid grid-3"><div class="card stat"><div>Overall</div><div class="num">86%</div><span class="badge">Good</span></div><div class="card stat"><div>Highest</div><div class="num">94%</div><span class="badge">Java</span></div><div class="card stat"><div>Needs attention</div><div class="num">72%</div><span class="badge">Networking</span></div></div><div class="card" style="margin-top:18px;padding:20px"><div class="table-wrap"><table class="table"><thead><tr><th>Subject</th><th>Present</th><th>Total</th><th>Attendance</th></tr></thead><tbody><tr><td>Java</td><td>28</td><td>30</td><td>93%</td></tr><tr><td>Web Development</td><td>26</td><td>30</td><td>87%</td></tr><tr><td>DSA</td><td>25</td><td>29</td><td>86%</td></tr><tr><td>Computer Networking</td><td>18</td><td>25</td><td>72%</td></tr><tr><td>Professional Skills</td><td>22</td><td>24</td><td>92%</td></tr></tbody></table></div></div></div></main></div><div id="toast" class="toast"></div><script src="shell.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Tracker | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-protected="true">
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div style="display:flex; align-items:center; gap:12px">
+        <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">
+          ☰
+        </button>
+        <a class="brand" href="home.html" aria-label="Student Hub Dashboard">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-text">Student Hub</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <div style="display:flex; align-items:center; gap:8px" class="user-greeting-chip">
+          <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+          <span style="font-weight:700; font-size:0.92rem" data-student-name>Diya Palan</span>
+        </div>
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          🌙
+        </button>
+        <button class="btn btn-secondary btn-sm logout-trigger" title="Log out">
+          <span>Logout</span>
+          <span>🚪</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="app-sidebar" aria-label="Student Portal Navigation">
+      <div>
+        <div class="sidebar-heading">Academic Portal</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="home.html">
+              <span class="link-icon">🏠</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link active" href="attendance.html">
+              <span class="link-icon">📊</span>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="assignments.html">
+              <span class="link-icon">📝</span>
+              <span>Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="events.html">
+              <span class="link-icon">📅</span>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="fees.html">
+              <span class="link-icon">💳</span>
+              <span>Fee Details</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="results.html">
+              <span class="link-icon">🎯</span>
+              <span>Results & Grades</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="timetable.html">
+              <span class="link-icon">🗓️</span>
+              <span>Class Timetable</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-heading">Community & Tools</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="students.html">
+              <span class="link-icon">👥</span>
+              <span>Student Directory</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="profile.html">
+              <span class="link-icon">👤</span>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="learning.html">
+              <span class="link-icon">📚</span>
+              <span>Learning Hub</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="index.html">
+              <span class="link-icon">ℹ️</span>
+              <span>Information Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm logout-trigger" style="width:100%; justify-content:center">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <div class="container">
+        
+        <div class="page-header">
+          <div>
+            <span class="section-eyebrow">Academic Status</span>
+            <h1 class="page-title">Subject Attendance</h1>
+            <p class="page-subtitle">Track lecture presence, minimum criteria compliance, and subject breakdowns.</p>
+          </div>
+
+          <div style="display:flex; gap:10px">
+            <button class="btn btn-secondary btn-sm" data-demo-action="Attendance report generated and saved." data-demo-type="info">
+              📄 Download Attendance Report
+            </button>
+          </div>
+        </div>
+
+        <!-- 3 Stats Overview -->
+        <div class="grid grid-3" style="margin-bottom:28px">
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span>Overall Average</span>
+              <span>📊</span>
+            </div>
+            <div class="stat-value">88.1%</div>
+            <div class="stat-footer">
+              <span class="badge badge-success">Safe (&ge; 75%)</span>
+              <span style="font-size:0.85rem; color:var(--text-muted)">126 / 143 Sessions</span>
+            </div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span>Top Subject</span>
+              <span>🌟</span>
+            </div>
+            <div class="stat-value" style="font-size:1.8rem">Java (93.3%)</div>
+            <div class="stat-footer">
+              <span class="badge badge-primary">28 / 30 Lectures</span>
+              <span style="font-size:0.85rem; color:var(--text-muted)">Outstanding</span>
+            </div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span>Needs Attention</span>
+              <span>⚠️</span>
+            </div>
+            <div class="stat-value" style="font-size:1.8rem; color:var(--danger-color)">Networking (72.0%)</div>
+            <div class="stat-footer">
+              <span class="badge badge-danger">Below 75% Cutoff</span>
+              <span style="font-size:0.85rem; color:var(--danger-color); font-weight:700">Need 2 more classes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subject Breakdown Table -->
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:12px">
+            <h2 style="font-size:1.25rem; font-weight:800">Semester 3 Attendance Breakdown</h2>
+            <div class="toolbar-group">
+              <label for="attSubjectFilter" class="form-label" style="margin:0">Filter:</label>
+              <select id="attSubjectFilter" class="filter-select">
+                <option value="all">All Subjects</option>
+                <option value="good">Safe (&ge; 85%)</option>
+                <option value="warning">Borderline (75-84%)</option>
+                <option value="risk">At Risk (&lt; 75%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table class="data-table" id="attendanceTable">
+              <thead>
+                <tr>
+                  <th>Subject Code & Name</th>
+                  <th>Faculty Instructor</th>
+                  <th>Attended</th>
+                  <th>Total Conducted</th>
+                  <th>Percentage</th>
+                  <th>Visual Progress</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-level="good">
+                  <td><strong>IT201: Object Oriented Java</strong></td>
+                  <td>Prof. K. Sharma</td>
+                  <td>28</td>
+                  <td>30</td>
+                  <td><strong>93.3%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill strong" style="width:93.3%"></div></div>
+                  </td>
+                  <td><span class="badge badge-success">Excellent</span></td>
+                </tr>
+                <tr data-level="good">
+                  <td><strong>IT202: Modern Web Development</strong></td>
+                  <td>Prof. S. Joshi</td>
+                  <td>26</td>
+                  <td>30</td>
+                  <td><strong>86.7%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill strong" style="width:86.7%"></div></div>
+                  </td>
+                  <td><span class="badge badge-success">Good</span></td>
+                </tr>
+                <tr data-level="good">
+                  <td><strong>IT203: Data Structures & Algorithms</strong></td>
+                  <td>Dr. P. Mehta</td>
+                  <td>25</td>
+                  <td>29</td>
+                  <td><strong>86.2%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill strong" style="width:86.2%"></div></div>
+                  </td>
+                  <td><span class="badge badge-success">Good</span></td>
+                </tr>
+                <tr data-level="risk">
+                  <td><strong>IT204: Computer Networks</strong></td>
+                  <td>Prof. R. Patel</td>
+                  <td>18</td>
+                  <td>25</td>
+                  <td><strong style="color:var(--danger-color)">72.0%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill weak" style="width:72%"></div></div>
+                  </td>
+                  <td><span class="badge badge-danger">Needs Attendance</span></td>
+                </tr>
+                <tr data-level="good">
+                  <td><strong>IT205: Professional Soft Skills</strong></td>
+                  <td>Dr. A. Trivedi</td>
+                  <td>22</td>
+                  <td>24</td>
+                  <td><strong>91.7%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill strong" style="width:91.7%"></div></div>
+                  </td>
+                  <td><span class="badge badge-success">Excellent</span></td>
+                </tr>
+                <tr data-level="warning">
+                  <td><strong>IT206: Database Management Systems</strong></td>
+                  <td>Prof. N. Desai</td>
+                  <td>23</td>
+                  <td>29</td>
+                  <td><strong>79.3%</strong></td>
+                  <td style="min-width:140px">
+                    <div class="strength-bar-bg"><div class="strength-bar-fill medium" style="width:79.3%"></div></div>
+                  </td>
+                  <td><span class="badge badge-warning">Borderline</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filter = document.getElementById('attSubjectFilter');
+      const rows = document.querySelectorAll('#attendanceTable tbody tr');
+      filter?.addEventListener('change', () => {
+        const val = filter.value;
+        rows.forEach(row => {
+          const level = row.getAttribute('data-level');
+          if (val === 'all' || val === level) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

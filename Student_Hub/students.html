@@ -1,1 +1,229 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Students | Student Hub</title><link rel="stylesheet" href="style.css"></head><body data-protected="true" data-data-page="students"><div id="siteHeader"></div><div class="app-shell"><aside class="sidebar" id="sidebar"></aside><main class="main"><div class="container"><div class="page-head"><div><span class="eyebrow">JSON Records</span><h1>Student Directory</h1><p class="section-sub">15 student records loaded with Fetch API, search, sorting and pagination.</p></div><span id="recordCount" class="badge">0 records</span></div><div class="card" style="padding:20px"><div class="toolbar"><input id="search" type="search" placeholder="Search students…" aria-label="Search students"><select id="sort"><option value="">Sort by…</option></select></div><div id="dataLoading" class="loading">Loading students…</div><div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Name</th><th>Course</th><th>Year</th><th>Status</th></tr></thead><tbody id="dataBody"></tbody></table></div><div id="pagination" class="pagination"></div></div></div></main></div><div id="toast" class="toast"></div><script src="shell.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Directory | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-protected="true">
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div style="display:flex; align-items:center; gap:12px">
+        <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">
+          ☰
+        </button>
+        <a class="brand" href="home.html" aria-label="Student Hub Dashboard">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-text">Student Hub</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <div style="display:flex; align-items:center; gap:8px" class="user-greeting-chip">
+          <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+          <span style="font-weight:700; font-size:0.92rem" data-student-name>Diya Palan</span>
+        </div>
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          🌙
+        </button>
+        <button class="btn btn-secondary btn-sm logout-trigger" title="Log out">
+          <span>Logout</span>
+          <span>🚪</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="app-sidebar" aria-label="Student Portal Navigation">
+      <div>
+        <div class="sidebar-heading">Academic Portal</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="home.html">
+              <span class="link-icon">🏠</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="attendance.html">
+              <span class="link-icon">📊</span>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="assignments.html">
+              <span class="link-icon">📝</span>
+              <span>Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="events.html">
+              <span class="link-icon">📅</span>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="fees.html">
+              <span class="link-icon">💳</span>
+              <span>Fee Details</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="results.html">
+              <span class="link-icon">🎯</span>
+              <span>Results & Grades</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="timetable.html">
+              <span class="link-icon">🗓️</span>
+              <span>Class Timetable</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-heading">Community & Tools</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link active" href="students.html">
+              <span class="link-icon">👥</span>
+              <span>Student Directory</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="profile.html">
+              <span class="link-icon">👤</span>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="learning.html">
+              <span class="link-icon">📚</span>
+              <span>Learning Hub</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="index.html">
+              <span class="link-icon">ℹ️</span>
+              <span>Information Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm logout-trigger" style="width:100%; justify-content:center">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <div class="container">
+        
+        <div class="page-header">
+          <div>
+            <span class="section-eyebrow">Fetch API & Directory JSON</span>
+            <h1 class="page-title">Enrolled Students Directory</h1>
+            <p class="page-subtitle">16 verified student records queried dynamically from <code>data/students.json</code> with filters, sorting, and pagination.</p>
+          </div>
+
+          <div style="display:flex; gap:10px">
+            <span class="badge badge-primary" id="studentCountBadge">Loading...</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <!-- Filters & Search Toolbar -->
+          <div class="toolbar">
+            <div class="toolbar-group">
+              <input
+                type="search"
+                id="studentSearch"
+                class="search-input"
+                placeholder="Search by student name or email..."
+                aria-label="Search students by name or email"
+              >
+              <select id="studentCourseFilter" class="filter-select" aria-label="Filter students by course">
+                <option value="all">All Courses</option>
+                <option value="B.Tech Computer Engineering">B.Tech Computer Engineering</option>
+                <option value="B.Tech IT">B.Tech IT</option>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <select id="studentYearFilter" class="filter-select" aria-label="Filter students by year">
+                <option value="all">All Years</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+              </select>
+
+              <select id="studentAttendanceFilter" class="filter-select" aria-label="Filter students by attendance rate">
+                <option value="all">All Attendance</option>
+                <option value="90plus">&ge; 90% (Outstanding)</option>
+                <option value="80to89">80% - 89% (Good)</option>
+                <option value="75to79">75% - 79% (Borderline)</option>
+                <option value="below75">&lt; 75% (At Risk)</option>
+              </select>
+
+              <select id="studentSort" class="filter-select" aria-label="Sort students">
+                <option value="name-asc">Name: A &rarr; Z</option>
+                <option value="name-desc">Name: Z &rarr; A</option>
+                <option value="att-desc">Attendance: High &rarr; Low</option>
+                <option value="att-asc">Attendance: Low &rarr; High</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Student Records Table -->
+          <div class="table-container">
+            <table class="data-table" aria-live="polite">
+              <thead>
+                <tr>
+                  <th>Roll / ID</th>
+                  <th>Student Name</th>
+                  <th>Institute Email</th>
+                  <th>Course Program</th>
+                  <th>Year</th>
+                  <th>Division</th>
+                  <th>Attendance</th>
+                </tr>
+              </thead>
+              <tbody id="studentTableBody">
+                <!-- Dynamically rendered via js/students.js -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Controls -->
+          <div id="studentPagination" class="pagination" aria-label="Students pagination">
+            <!-- Dynamically rendered via js/students.js -->
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

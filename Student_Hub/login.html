@@ -1,1 +1,138 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login | Student Hub</title><link rel="stylesheet" href="style.css"></head><body><header class="topbar"><div class="container nav"><a class="brand" href="index.html"><span class="brand-mark">🎓</span><span>Student Hub</span></a><div class="nav-actions"><button id="themeBtn" class="icon-btn" aria-label="Toggle theme">🌙</button><a class="btn btn-secondary" href="registration.html">Register</a></div></div></header><main class="auth-wrap"><form id="loginForm" class="auth-card card" novalidate><span class="eyebrow">Welcome back</span><h1>Login to Student Hub</h1><p class="section-sub">Use your student credentials to open the dashboard.</p><div class="form-grid"><div class="field"><label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="email" required><div id="loginEmailErr" class="error"></div></div><div class="field"><label for="loginPassword">Password</label><input id="loginPassword" type="password" autocomplete="current-password" required><div id="loginPassErr" class="error"></div></div><button class="btn btn-primary" type="submit">Login →</button><a class="btn btn-secondary" href="index.html">← Back to information page</a></div></form></main><div id="toast" class="toast" role="status"></div><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Student Hub Home">
+        <span class="brand-icon">🎓</span>
+        <span class="brand-text">Student Hub</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle light or dark theme" title="Toggle theme">
+          🌙
+        </button>
+        <a class="btn btn-secondary" href="register.html">Register</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="container container-narrow">
+      <div class="auth-card">
+        <div class="auth-header">
+          <span class="section-eyebrow">Welcome Back</span>
+          <h1>Login to Student Hub</h1>
+          <p>Access your attendance, assignments, events, and results dashboard.</p>
+        </div>
+
+        <form id="loginForm" novalidate autocomplete="on">
+          <div class="form-layout">
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="loginEmail">
+                Student Email <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="loginEmail"
+                name="email"
+                class="form-input"
+                placeholder="25cs053@charusat.edu.in"
+                required
+                value="25cs053@charusat.edu.in"
+                autocomplete="email"
+                aria-describedby="loginEmailErr"
+              >
+              <div id="loginEmailErr" class="field-error" aria-live="polite"></div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <div style="display:flex; justify-content:space-between; align-items:center">
+                <label class="form-label" for="loginPassword">
+                  Password <span class="required" aria-hidden="true">*</span>
+                </label>
+                <button type="button" class="btn-sm" style="color:var(--primary-color); font-weight:600; font-size:0.85rem; padding:0" data-modal-open="forgotPasswordModal">
+                  Forgot password?
+                </button>
+              </div>
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                class="form-input"
+                placeholder="Enter your student password"
+                required
+                value="Charusat@2026"
+                autocomplete="current-password"
+                aria-describedby="loginPassErr"
+              >
+              <div id="loginPassErr" class="field-error" aria-live="polite"></div>
+            </div>
+
+            <!-- Remember Me -->
+            <div class="form-group">
+              <label class="checkbox-label" for="rememberMe">
+                <input type="checkbox" id="rememberMe" name="rememberMe" checked>
+                <span>Remember me on this browser</span>
+              </label>
+            </div>
+
+            <!-- Submit Button & Action Links -->
+            <div style="display:flex; flex-direction:column; gap:14px; margin-top:8px">
+              <button type="submit" class="btn btn-primary btn-lg">
+                <span>Login to Dashboard</span>
+                <span>→</span>
+              </button>
+
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:0.92rem; color:var(--text-muted)">
+                <a href="index.html" style="color:var(--text-muted)">← Back to Landing Page</a>
+                <span>Don't have an account? <a href="register.html" style="color:var(--primary-color); font-weight:700">Create one</a></span>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Forgot Password Demo Modal -->
+  <div id="forgotPasswordModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="forgotTitle" class="modal-title">Password Recovery Demo</h2>
+        <button class="modal-close-btn" data-modal-close aria-label="Close dialog">×</button>
+      </div>
+      <div class="modal-body">
+        <p>This is a frontend demonstration portal. You can log in using the pre-filled demo student credentials:</p>
+        <div style="background:var(--surface-variant); padding:14px; border-radius:var(--radius-md); margin-top:12px; font-size:0.92rem">
+          <div><strong>Email:</strong> <code>25cs053@charusat.edu.in</code></div>
+          <div style="margin-top:4px"><strong>Password:</strong> <code>Charusat@2026</code></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-modal-close>Got It, Continue to Login</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

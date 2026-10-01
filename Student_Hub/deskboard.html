@@ -1,1 +1,342 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dashboard | Student Hub</title><link rel="stylesheet" href="style.css"></head><body data-protected="true"><div id="siteHeader"></div><div class="app-shell"><aside class="sidebar" id="sidebar"></aside><main class="main"><div class="container"><div id="notice" class="notice"><span>📢 <b>Welcome to Student Hub!</b> Explore every module from the hamburger menu.</span><button id="noticeClose" class="icon-btn" aria-label="Close notification">×</button></div><div class="page-head"><div><span class="eyebrow">Student Dashboard</span><h1>Hello, <span data-user-name>Student</span> 👋</h1><p class="section-sub">Your campus information, organized in one place.</p></div><button id="openModal" class="btn btn-primary">Quick Help</button></div><div class="grid grid-4"><a class="card stat" href="attendance.html"><div>Attendance</div><div class="num">86%</div><span class="badge">View details →</span></a><a class="card stat" href="assignment.html"><div>Assignments</div><div class="num">08</div><span class="badge">2 due soon</span></a><a class="card stat" href="events.html"><div>Events</div><div class="num">15</div><span class="badge">Browse events</span></a><a class="card stat" href="fees.html"><div>Fees</div><div class="num">₹12k</div><span class="badge">View status</span></a></div><section class="section"><div class="slider"><article class="slide active"><h3>Keep your semester on track.</h3><p>Check attendance, assignments and upcoming events without leaving the portal.</p></article><article class="slide"><h3>Use the menu everywhere.</h3><p>The hamburger menu remains available across the entire logged-in website.</p></article><article class="slide"><h3>Theme follows you.</h3><p>Light/dark mode is stored in localStorage and remains active on every page.</p></article><div class="slide-controls"><button id="prevSlide">‹</button><button id="nextSlide">›</button></div></div></section><div class="grid grid-3"><a class="card" style="padding:20px" href="result.html"><h3>🎯 Results</h3><p class="section-sub">View semester performance.</p></a><a class="card" style="padding:20px" href="time_table.html"><h3>🗓️ Timetable</h3><p class="section-sub">See today's classes.</p></a><a class="card" style="padding:20px" href="profile.html"><h3>👤 Profile</h3><p class="section-sub">Update your student details.</p></a></div></div></main></div><div id="modal" class="modal-backdrop" role="dialog" aria-modal="true"><div class="modal"><h2>Student Hub Help</h2><p>Use the hamburger menu to navigate to every module. The theme button switches between lavender light and dark modes.</p><button class="btn btn-primary" data-close-modal>Got it</button></div></div><div id="toast" class="toast"></div><script src="shell.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-protected="true">
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div style="display:flex; align-items:center; gap:12px">
+        <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">
+          ☰
+        </button>
+        <a class="brand" href="home.html" aria-label="Student Hub Dashboard">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-text">Student Hub</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <div style="display:flex; align-items:center; gap:8px" class="user-greeting-chip">
+          <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+          <span style="font-weight:700; font-size:0.92rem" data-student-name>Diya Palan</span>
+        </div>
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          🌙
+        </button>
+        <button class="btn btn-secondary btn-sm logout-trigger" title="Log out of Student Hub">
+          <span>Logout</span>
+          <span>🚪</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Shell with Sidebar Drawer & Main Dashboard -->
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="app-sidebar" aria-label="Student Portal Navigation">
+      <div>
+        <div class="sidebar-heading">Academic Portal</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link active" href="home.html">
+              <span class="link-icon">🏠</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="attendance.html">
+              <span class="link-icon">📊</span>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="assignments.html">
+              <span class="link-icon">📝</span>
+              <span>Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="events.html">
+              <span class="link-icon">📅</span>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="fees.html">
+              <span class="link-icon">💳</span>
+              <span>Fee Details</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="results.html">
+              <span class="link-icon">🎯</span>
+              <span>Results & Grades</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="timetable.html">
+              <span class="link-icon">🗓️</span>
+              <span>Class Timetable</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-heading">Community & Tools</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="students.html">
+              <span class="link-icon">👥</span>
+              <span>Student Directory</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="profile.html">
+              <span class="link-icon">👤</span>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="learning.html">
+              <span class="link-icon">📚</span>
+              <span>Learning Hub</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="index.html">
+              <span class="link-icon">ℹ️</span>
+              <span>Information Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm logout-trigger" style="width:100%; justify-content:center">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <div class="container">
+
+        <!-- Dismissible Notification Banner -->
+        <div id="notificationBanner" class="notification-banner" role="alert">
+          <div class="notification-content">
+            <span style="font-size:1.3rem">📢</span>
+            <span>
+              <strong>New Notice:</strong> DOM Mini Project has been assigned for Web Development. Due on Oct 11!
+            </span>
+          </div>
+          <button class="notification-close" aria-label="Dismiss notification">✕</button>
+        </div>
+
+        <!-- Dashboard Page Header -->
+        <div class="page-header">
+          <div>
+            <span class="section-eyebrow">Student Dashboard</span>
+            <h1 class="page-title">Welcome back, <span data-student-name>Diya Palan</span> 👋</h1>
+            <p class="page-subtitle">
+              <span data-student-course>B.Tech Computer Engineering</span> &bull; 
+              <span data-student-year>2nd Year</span> &bull; 
+              Division <span data-student-division>CE-A</span>
+            </p>
+          </div>
+
+          <div style="display:flex; gap:10px">
+            <button class="btn btn-primary" data-modal-open="quickHelpModal">
+              <span>💡 Portal Guide</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Stat Summary Cards (Clickable) -->
+        <div class="grid grid-4" style="margin-bottom:28px">
+          <a class="card card-interactive stat-card" href="attendance.html">
+            <div class="stat-header">
+              <span>Overall Attendance</span>
+              <span>📊</span>
+            </div>
+            <div class="stat-value">88%</div>
+            <div class="stat-footer">
+              <span class="badge badge-success">Above 75% Criteria</span>
+              <span style="font-size:0.85rem; color:var(--primary-color); font-weight:700">View →</span>
+            </div>
+          </a>
+
+          <a class="card card-interactive stat-card" href="assignments.html">
+            <div class="stat-header">
+              <span>Assignments</span>
+              <span>📝</span>
+            </div>
+            <div class="stat-value">04</div>
+            <div class="stat-footer">
+              <span class="badge badge-warning">2 Due This Week</span>
+              <span style="font-size:0.85rem; color:var(--primary-color); font-weight:700">Track →</span>
+            </div>
+          </a>
+
+          <a class="card card-interactive stat-card" href="events.html">
+            <div class="stat-header">
+              <span>Campus Events</span>
+              <span>📅</span>
+            </div>
+            <div class="stat-value">16</div>
+            <div class="stat-footer">
+              <span class="badge badge-primary">Tech Fest Upcoming</span>
+              <span style="font-size:0.85rem; color:var(--primary-color); font-weight:700">Browse →</span>
+            </div>
+          </a>
+
+          <a class="card card-interactive stat-card" href="fees.html">
+            <div class="stat-header">
+              <span>Semester Fees</span>
+              <span>💳</span>
+            </div>
+            <div class="stat-value">₹12k</div>
+            <div class="stat-footer">
+              <span class="badge badge-info">Sem 4 Due</span>
+              <span style="font-size:0.85rem; color:var(--primary-color); font-weight:700">Pay →</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Interactive Content Slider Section -->
+        <section style="margin-bottom:32px">
+          <div class="slider-container" role="region" aria-label="Campus news slider">
+            <div class="slider-wrapper">
+              <article class="slide active">
+                <span class="slide-tag">Campus News</span>
+                <h3 class="slide-title">Cognizance Tech Fest 2026 Registration Open!</h3>
+                <p class="slide-description">
+                  Participate in the flagship hackathon, algorithmic challenges, and robotics competitions starting Oct 15 at CHARUSAT Auditorium.
+                </p>
+              </article>
+
+              <article class="slide">
+                <span class="slide-tag">Academic Alert</span>
+                <h3 class="slide-title">Continuous Internal Evaluation (CIE-2) Schedule</h3>
+                <p class="slide-description">
+                  Mid-term examinations commence next month. Check your syllabus coverage and attendance records to ensure exam eligibility.
+                </p>
+              </article>
+
+              <article class="slide">
+                <span class="slide-tag">Career & Placement</span>
+                <h3 class="slide-title">Full-Stack Web Dev Masterclass</h3>
+                <p class="slide-description">
+                  Join the intensive hands-on lab on modern JavaScript, DOM architecture, and REST API integration this Saturday in Lab 3.
+                </p>
+              </article>
+            </div>
+
+            <div class="slider-dots"></div>
+            <div class="slider-nav">
+              <button class="slider-btn slider-prev" aria-label="Previous slide">‹</button>
+              <button class="slider-btn slider-next" aria-label="Next slide">›</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Access Module Cards -->
+        <div>
+          <h2 style="font-size:1.35rem; font-weight:800; margin-bottom:16px">Quick Access Modules</h2>
+          <div class="grid grid-3">
+            
+            <a class="card card-interactive" href="results.html">
+              <div style="font-size:2rem; margin-bottom:8px">🎯</div>
+              <h3 style="font-size:1.15rem; font-weight:750">Semester Results</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Inspect SGPA (8.6), cumulative credits (24), and subject-wise grade letters.
+              </p>
+            </a>
+
+            <a class="card card-interactive" href="timetable.html">
+              <div style="font-size:2rem; margin-bottom:8px">🗓️</div>
+              <h3 style="font-size:1.15rem; font-weight:750">Class Timetable</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Review weekly lectures, lab sessions, classrooms, and faculty schedules.
+              </p>
+            </a>
+
+            <a class="card card-interactive" href="students.html">
+              <div style="font-size:2rem; margin-bottom:8px">👥</div>
+              <h3 style="font-size:1.15rem; font-weight:750">Student Directory</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Search and filter peers across Computer Engineering, IT, BCA, and MCA.
+              </p>
+            </a>
+
+            <a class="card card-interactive" href="profile.html">
+              <div style="font-size:2rem; margin-bottom:8px">👤</div>
+              <h3 style="font-size:1.15rem; font-weight:750">My Profile</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Update your contact details, bio, and student credentials in browser storage.
+              </p>
+            </a>
+
+            <a class="card card-interactive" href="learning.html">
+              <div style="font-size:2rem; margin-bottom:8px">📚</div>
+              <h3 style="font-size:1.15rem; font-weight:750">Learning Hub</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Access Coursera certifications, MDN Web Docs, freeCodeCamp, and lecture notes.
+              </p>
+            </a>
+
+            <a class="card card-interactive" href="fees.html">
+              <div style="font-size:2rem; margin-bottom:8px">💳</div>
+              <h3 style="font-size:1.15rem; font-weight:750">Fee Management</h3>
+              <p class="section-sub" style="font-size:0.9rem; margin-top:4px">
+                Inspect payment history, download transaction receipts, and settle balance dues.
+              </p>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Quick Help Modal Dialog -->
+  <div id="quickHelpModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="helpModalTitle" class="modal-title">Student Portal Quick Guide</h2>
+        <button class="modal-close-btn" data-modal-close aria-label="Close dialog">×</button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Welcome to the Student Hub Academic Portal!</strong> Here is how to navigate:</p>
+        <ul style="margin-left:20px; margin-top:10px; display:flex; flex-direction:column; gap:8px">
+          <li><strong>☰ Hamburger Menu:</strong> On mobile screens, click the top-left button to slide out the complete menu.</li>
+          <li><strong>🌙 Theme Toggle:</strong> Click the sun/moon icon anytime to toggle between lavender light and dark modes.</li>
+          <li><strong>🔄 Live Data:</strong> Events and Student directories dynamically query JSON records via Fetch API.</li>
+          <li><strong>🚪 Logout:</strong> Click Logout at any time to clear authentication and return to the landing page.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-modal-close>Got It, Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

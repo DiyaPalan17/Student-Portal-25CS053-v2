@@ -1,3 +1,130 @@
 [
-{"id":1,"title":"Tech Fest 2026","date":"2026-10-12","category":"Technology","venue":"Main Auditorium"},{"id":2,"title":"Cybersecurity Workshop","date":"2026-10-15","category":"Workshop","venue":"Lab 3"},{"id":3,"title":"AI Innovation Talk","date":"2026-10-18","category":"Seminar","venue":"Seminar Hall"},{"id":4,"title":"Coding Contest","date":"2026-10-21","category":"Competition","venue":"Coding Lab"},{"id":5,"title":"Web Development Bootcamp","date":"2026-10-24","category":"Workshop","venue":"Lab 2"},{"id":6,"title":"Entrepreneurship Meetup","date":"2026-10-27","category":"Meetup","venue":"Innovation Centre"},{"id":7,"title":"Sports Day","date":"2026-11-02","category":"Sports","venue":"University Ground"},{"id":8,"title":"Robotics Showcase","date":"2026-11-05","category":"Technology","venue":"Robotics Lab"},{"id":9,"title":"Resume Building Session","date":"2026-11-08","category":"Career","venue":"Placement Cell"},{"id":10,"title":"Open Source Day","date":"2026-11-11","category":"Technology","venue":"IT Block"},{"id":11,"title":"Hackathon Orientation","date":"2026-11-14","category":"Competition","venue":"Innovation Centre"},{"id":12,"title":"Women in Tech Panel","date":"2026-11-18","category":"Seminar","venue":"Main Auditorium"},{"id":13,"title":"Cloud Computing Lab","date":"2026-11-21","category":"Workshop","venue":"Cloud Lab"},{"id":14,"title":"Cultural Evening","date":"2026-11-25","category":"Cultural","venue":"Open Theatre"},{"id":15,"title":"Career Fair","date":"2026-11-30","category":"Career","venue":"Convention Hall"}
+  {
+    "id": 1,
+    "title": "Cognizance Tech Fest 2026",
+    "date": "2026-10-15",
+    "category": "Technical",
+    "location": "CHARUSAT Central Auditorium",
+    "description": "Annual flagship national-level technical symposium featuring hackathons, code debugging, robotics, and tech paper presentations."
+  },
+  {
+    "id": 2,
+    "title": "Full-Stack Web Development Bootcamp",
+    "date": "2026-10-18",
+    "category": "Workshop",
+    "location": "CSPIT Computer Lab 3",
+    "description": "Hands-on masterclass on modern frontend architectures, DOM manipulation, REST APIs, and responsive design systems."
+  },
+  {
+    "id": 3,
+    "title": "Cybersecurity & Ethical Hacking Clinic",
+    "date": "2026-10-22",
+    "category": "Workshop",
+    "location": "DEPSTAR Seminar Hall 2",
+    "description": "Practical demonstration on network security essentials, web application vulnerabilities, and cyber defense best practices."
+  },
+  {
+    "id": 4,
+    "title": "AI & Generative Models Symposium",
+    "date": "2026-10-25",
+    "category": "Seminar",
+    "location": "Main University Auditorium",
+    "description": "Distinguished guest lecture series exploring breakthroughs in large language models, computer vision, and ethical AI."
+  },
+  {
+    "id": 5,
+    "title": "ByteCode Inter-College Coding Contest",
+    "date": "2026-10-28",
+    "category": "Technical",
+    "location": "Advanced Coding Lab A",
+    "description": "Competitive algorithmic programming contest testing Data Structures, dynamic programming, and problem-solving speed."
+  },
+  {
+    "id": 6,
+    "title": "Spandan Annual Cultural Festival",
+    "date": "2026-11-04",
+    "category": "Cultural",
+    "location": "Open Air Amphitheatre",
+    "description": "Three days of music, classical and western dance battles, theatrical plays, and artistic exhibitions by student clubs."
+  },
+  {
+    "id": 7,
+    "title": "Inter-Department Cricket Tournament",
+    "date": "2026-11-08",
+    "category": "Sports",
+    "location": "University Sports Complex",
+    "description": "T20 championship bringing together students and faculty from across engineering, pharmacy, and computer applications."
+  },
+  {
+    "id": 8,
+    "title": "Robotics & Drone Navigation Expo",
+    "date": "2026-11-12",
+    "category": "Technical",
+    "location": "Mechanical Innovation Centre",
+    "description": "Live demonstration of autonomous line followers, battle bots, and obstacle-avoiding quadcopter drones."
+  },
+  {
+    "id": 9,
+    "title": "Campus Placement & Resume Workshop",
+    "date": "2026-11-15",
+    "category": "Workshop",
+    "location": "Training & Placement Cell Hall",
+    "description": "Interactive corporate session covering resume optimization, technical interview strategies, and group discussions."
+  },
+  {
+    "id": 10,
+    "title": "Cloud Native Architecture Seminar",
+    "date": "2026-11-19",
+    "category": "Seminar",
+    "location": "IT Block Conference Room",
+    "description": "Industry architect talk covering microservices, Docker containers, Kubernetes clustering, and AWS cloud design."
+  },
+  {
+    "id": 11,
+    "title": "HackCHARUSAT 36-Hour Hackathon",
+    "date": "2026-11-23",
+    "category": "Technical",
+    "location": "Student Activity Centre",
+    "description": "Intensive team hackathon challenging participants to build innovative solutions for healthcare, education, and smart cities."
+  },
+  {
+    "id": 12,
+    "title": "Badminton & Table Tennis League",
+    "date": "2026-11-27",
+    "category": "Sports",
+    "location": "Indoor Gymnasium",
+    "description": "Annual singles and doubles racquet sports tournament featuring knockouts, prizes, and college trophies."
+  },
+  {
+    "id": 13,
+    "title": "Women in Tech Leadership Forum",
+    "date": "2026-12-02",
+    "category": "Seminar",
+    "location": "Executive Seminar Hall",
+    "description": "Inspiring panel discussion featuring women leaders from Google, Microsoft, and tech startups sharing career journeys."
+  },
+  {
+    "id": 14,
+    "title": "Kavyanjali & Folk Art Evening",
+    "date": "2026-12-06",
+    "category": "Cultural",
+    "location": "Campus Central Garden",
+    "description": "An enchanting celebration of Gujarati and Hindi literature, poetry recitals, folk musical performances, and youth talks."
+  },
+  {
+    "id": 15,
+    "title": "Startup Pitch & Angel Investor Summit",
+    "date": "2026-12-10",
+    "category": "Workshop",
+    "location": "Charusat Incubation Centre",
+    "description": "Student entrepreneurs pitch disruptive business ideas to seed investors, mentors, and successful alumni founders."
+  },
+  {
+    "id": 16,
+    "title": "Annual Athletics & Football Meet",
+    "date": "2026-12-14",
+    "category": "Sports",
+    "location": "CHARUSAT Main Stadium",
+    "description": "Track-and-field events including 100m sprint, relay, long jump, and the university inter-college football cup final."
+  }
 ]

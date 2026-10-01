@@ -1,3 +1,98 @@
 [
-{"question":"How do I access my dashboard?","answer":"Register or log in from the information page. A successful login redirects you to the dashboard."},{"question":"Can I switch between light and dark mode?","answer":"Yes. Use the theme button in the top navigation. Your choice is saved in localStorage."},{"question":"Where can I see my attendance?","answer":"Open the hamburger menu on the dashboard and choose Attendance."},{"question":"Where are assignments shown?","answer":"Choose Assignments from the hamburger menu. You can search and filter the records."},{"question":"Can I view campus events?","answer":"Yes. The Events page loads event records dynamically from events.json."},{"question":"How does the event search work?","answer":"Type a keyword into the search box. JavaScript filters the fetched JSON records immediately."},{"question":"Can records be sorted?","answer":"Yes. Select a field from the Sort dropdown to sort the current data set."},{"question":"Does pagination use JavaScript?","answer":"Yes. The table displays a fixed number of records per page and JavaScript creates the page buttons."},{"question":"What happens if JSON loading fails?","answer":"The interface shows an error toast and an empty-state message. Run the project with a local server for Fetch API access."},{"question":"Is the registration form validated?","answer":"Yes. JavaScript validates every required field, including regex checks for name, email, mobile and password."},{"question":"How is password strength shown?","answer":"The registration page updates a visual strength bar as you type."},{"question":"Is the menu mobile friendly?","answer":"Yes. On smaller screens the hamburger button opens and closes the navigation drawer."},{"question":"Can I log out?","answer":"Yes. Use Logout in the hamburger menu. It clears the demo authentication state and returns to the information page."},{"question":"Is this connected to a real college database?","answer":"No. This submission is a frontend demonstration using local JSON files and browser storage."},{"question":"Which technologies are demonstrated?","answer":"HTML5, CSS, JavaScript DOM APIs, events, localStorage, Fetch API, JSON, regex validation, filtering, sorting and pagination."}
+  {
+    "id": 1,
+    "question": "What is the primary purpose of Student Hub?",
+    "answer": "Student Hub is a centralized, unified student portal designed to manage academic life seamlessly—including attendance tracking, assignment submissions, campus events, exam results, fee payments, class timetables, and learning resources.",
+    "category": "General"
+  },
+  {
+    "id": 2,
+    "question": "How do I create a new student account?",
+    "answer": "Click 'Create Account' or navigate to register.html. Fill in your full name, student email, 10-digit Indian mobile number, create a strong password, choose your course and year, select your gender, and accept the terms and conditions.",
+    "category": "Account"
+  },
+  {
+    "id": 3,
+    "question": "What are the password requirements during registration?",
+    "answer": "Your password must contain at least 8 characters, at least one uppercase letter (A-Z), one lowercase letter (a-z), one numeric digit (0-9), and at least one special character (!@#$%^&*). A live strength meter guides you as you type.",
+    "category": "Security"
+  },
+  {
+    "id": 4,
+    "question": "How do I log in to access my student dashboard?",
+    "answer": "Go to login.html, enter your registered student email and password, and click 'Login'. Upon successful authentication, you will be redirected straight to your home dashboard at home.html.",
+    "category": "Account"
+  },
+  {
+    "id": 5,
+    "question": "How does the Light and Dark Mode theme toggle work?",
+    "answer": "Click the theme icon (sun/moon) on the top navigation bar or within the hamburger menu. Your preferred theme is stored in localStorage so it persists across all pages, reloads, and browser sessions.",
+    "category": "Interface"
+  },
+  {
+    "id": 6,
+    "question": "Where can I find the responsive Hamburger Menu?",
+    "answer": "On desktop, a quick navigation sidebar is visible, while on mobile and tablet screens, a ☰ hamburger button appears on the top bar. Clicking it slides open a full drawer linking to all 11 modules of the portal.",
+    "category": "Navigation"
+  },
+  {
+    "id": 7,
+    "question": "How is my subject attendance monitored?",
+    "answer": "The Attendance page (attendance.html) displays overall percentage, subject-by-subject attendance stats, breakdown of classes attended versus conducted, and visual status badges alerting you if attendance drops below 75%.",
+    "category": "Academics"
+  },
+  {
+    "id": 8,
+    "question": "Can I search, filter, and view assignment details?",
+    "answer": "Yes! The Assignments page lets you filter by subject, search assignments by title or keyword, and click on any card to open a modal dialog displaying submission deadlines, instructions, and submission status.",
+    "category": "Academics"
+  },
+  {
+    "id": 9,
+    "question": "How does the Events page load campus activities?",
+    "answer": "The Events module fetches data dynamically from data/events.json using the Fetch API. It features interactive search, category filters (Technical, Workshop, Sports, Cultural, Seminar), date/title sorting, and 6-per-page pagination.",
+    "category": "Campus Life"
+  },
+  {
+    "id": 10,
+    "question": "How can I search and filter the Student Directory?",
+    "answer": "The Students page (students.html) uses Fetch API to query data/students.json. You can search by student name or email, filter by academic course or year, sort columns, and paginate through records dynamically.",
+    "category": "Directory"
+  },
+  {
+    "id": 11,
+    "question": "Where can I view my semester results and grades?",
+    "answer": "The Results page (results.html) breaks down previous and current semester grade points (SGPA and CGPA), credit points earned, course-wise letter grades, and academic standing.",
+    "category": "Academics"
+  },
+  {
+    "id": 12,
+    "question": "How do I check fee dues and payment history?",
+    "answer": "Visit fees.html to see your total semester fees, amounts paid, outstanding balance, and installment due dates. You can also trigger a demo receipt generator with toast confirmation.",
+    "category": "Finance"
+  },
+  {
+    "id": 13,
+    "question": "Can I edit and update my student profile information?",
+    "answer": "Yes, on profile.html you can view your personal details, enrolled course, semester, and contact information. You can edit your bio and details, which will be saved into browser localStorage.",
+    "category": "Profile"
+  },
+  {
+    "id": 14,
+    "question": "What happens if a JSON data fetch fails?",
+    "answer": "Every Fetch API call features complete error handling: if an issue occurs (e.g., file not found or offline), a clear error card is displayed in the DOM along with a 'Retry Loading' button and an error toast notification.",
+    "category": "Technical"
+  },
+  {
+    "id": 15,
+    "question": "How do I log out securely from the portal?",
+    "answer": "Click 'Logout' in the hamburger menu or top header. This clears your authentication token from localStorage, shows a confirmation toast notification, and redirects you back to the public landing page (index.html).",
+    "category": "Security"
+  },
+  {
+    "id": 16,
+    "question": "Does this portal require any backend server or frameworks?",
+    "answer": "No. The entire portal is crafted with clean, semantic HTML5, modern CSS3 variables and Flexbox/Grid, and modular Vanilla ES6 JavaScript leveraging the browser DOM, Fetch API, and localStorage.",
+    "category": "Technical"
+  }
 ]

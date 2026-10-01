@@ -1,1 +1,232 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Events | Student Hub</title><link rel="stylesheet" href="style.css"></head><body data-protected="true" data-data-page="events"><div id="siteHeader"></div><div class="app-shell"><aside class="sidebar" id="sidebar"></aside><main class="main"><div class="container"><div class="page-head"><div><span class="eyebrow">Fetch API + JSON</span><h1>Campus Events</h1><p class="section-sub">15 records loaded dynamically from <code>events.json</code>.</p></div><span id="recordCount" class="badge">0 records</span></div><div class="card" style="padding:20px"><div class="toolbar"><input id="search" type="search" placeholder="Search events…" aria-label="Search events"><select id="filter"><option value="all">All categories</option></select><select id="sort"><option value="">Sort by…</option></select></div><div id="dataLoading" class="loading">Loading events…</div><div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Title</th><th>Date</th><th>Category</th><th>Venue</th></tr></thead><tbody id="dataBody"></tbody></table></div><div id="pagination" class="pagination"></div></div></div></main></div><div id="toast" class="toast"></div><script src="shell.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Events | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-protected="true">
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div style="display:flex; align-items:center; gap:12px">
+        <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">
+          ☰
+        </button>
+        <a class="brand" href="home.html" aria-label="Student Hub Dashboard">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-text">Student Hub</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <div style="display:flex; align-items:center; gap:8px" class="user-greeting-chip">
+          <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+          <span style="font-weight:700; font-size:0.92rem" data-student-name>Diya Palan</span>
+        </div>
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          🌙
+        </button>
+        <button class="btn btn-secondary btn-sm logout-trigger" title="Log out">
+          <span>Logout</span>
+          <span>🚪</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="app-sidebar" aria-label="Student Portal Navigation">
+      <div>
+        <div class="sidebar-heading">Academic Portal</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="home.html">
+              <span class="link-icon">🏠</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="attendance.html">
+              <span class="link-icon">📊</span>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="assignments.html">
+              <span class="link-icon">📝</span>
+              <span>Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link active" href="events.html">
+              <span class="link-icon">📅</span>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="fees.html">
+              <span class="link-icon">💳</span>
+              <span>Fee Details</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="results.html">
+              <span class="link-icon">🎯</span>
+              <span>Results & Grades</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="timetable.html">
+              <span class="link-icon">🗓️</span>
+              <span>Class Timetable</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-heading">Community & Tools</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="students.html">
+              <span class="link-icon">👥</span>
+              <span>Student Directory</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="profile.html">
+              <span class="link-icon">👤</span>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="learning.html">
+              <span class="link-icon">📚</span>
+              <span>Learning Hub</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="index.html">
+              <span class="link-icon">ℹ️</span>
+              <span>Information Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm logout-trigger" style="width:100%; justify-content:center">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <div class="container">
+        
+        <div class="page-header">
+          <div>
+            <span class="section-eyebrow">Fetch API & JSON Powered</span>
+            <h1 class="page-title">Campus Events & Activities</h1>
+            <p class="page-subtitle">16 events loaded asynchronously from <code>data/events.json</code> with live search, filters, and pagination.</p>
+          </div>
+
+          <div style="display:flex; gap:10px">
+            <span class="badge badge-primary" id="eventCountBadge">Loading...</span>
+          </div>
+        </div>
+
+        <!-- Toolbar (Search, Filter, Sort) -->
+        <div class="card" style="margin-bottom:24px; padding:18px 24px">
+          <div class="toolbar" style="margin-bottom:0">
+            <div class="toolbar-group">
+              <label for="eventSearch" class="visually-hidden" style="display:none">Search Events</label>
+              <input
+                type="search"
+                id="eventSearch"
+                class="search-input"
+                placeholder="Search by event title, location or keywords..."
+                aria-label="Search events by title or keywords"
+              >
+              <select id="eventCategoryFilter" class="filter-select" aria-label="Filter events by category">
+                <option value="all">All Categories</option>
+                <option value="Technical">Technical</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Seminar">Seminar</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Sports">Sports</option>
+              </select>
+            </div>
+
+            <div class="toolbar-group">
+              <label for="eventSort" class="form-label" style="margin:0">Sort:</label>
+              <select id="eventSort" class="filter-select" aria-label="Sort events">
+                <option value="date-asc">Date: Upcoming First</option>
+                <option value="date-desc">Date: Latest First</option>
+                <option value="title-asc">Title: A &rarr; Z</option>
+                <option value="title-desc">Title: Z &rarr; A</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Events Grid -->
+        <div id="eventsContainer" class="events-grid" aria-live="polite">
+          <!-- Dynamically populated via js/events.js -->
+        </div>
+
+        <!-- Pagination Controls -->
+        <div id="eventPagination" class="pagination" aria-label="Events pagination">
+          <!-- Populated dynamically via js/events.js -->
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Event Details Modal -->
+  <div id="eventDetailsModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalEventTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="badge badge-primary" id="modalEventCategory">Technical</span>
+          <h2 id="modalEventTitle" class="modal-title" style="margin-top:6px">Event Title</h2>
+        </div>
+        <button class="modal-close-btn" data-modal-close aria-label="Close dialog">×</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background:var(--surface-variant); padding:12px 16px; border-radius:var(--radius-md); margin-bottom:16px; display:flex; flex-direction:column; gap:6px; font-size:0.92rem">
+          <div><strong>📅 Date:</strong> <span id="modalEventDate">Oct 15, 2026</span></div>
+          <div><strong>📍 Venue:</strong> <span id="modalEventVenue">CHARUSAT Central Auditorium</span></div>
+        </div>
+
+        <p id="modalEventDesc" style="line-height:1.65; color:var(--text-color)">
+          Detailed event description will appear here.
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Close</button>
+        <button class="btn btn-primary" data-modal-close data-demo-action="Registered for event successfully!" data-demo-type="success">
+          Register for Event Demo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

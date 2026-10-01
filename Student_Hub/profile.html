@@ -1,1 +1,234 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Profile | Student Hub</title><link rel="stylesheet" href="style.css"></head><body data-protected="true"><div id="siteHeader"></div><div class="app-shell"><aside class="sidebar" id="sidebar"></aside><main class="main"><div class="container"><div class="page-head"><div><span class="eyebrow">My Account</span><h1>Profile</h1><p class="section-sub">Your saved browser profile.</p></div></div><div class="card" style="padding:25px"><div class="profile"><img class="avatar" src="student.jpg" alt="Student profile"><div><h2 data-user-name>Student</h2><p data-user-email class="section-sub">student@example.com</p><span class="badge">Active Student</span></div></div><hr style="border:0;border-top:1px solid var(--border);margin:24px 0"><p><b>Course:</b> B.Tech Computer Engineering</p><p><b>Portal status:</b> Logged in</p><p><b>Theme:</b> Controlled with localStorage</p></div></div></main></div><div id="toast" class="toast"></div><script src="shell.js"></script><script src="app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile | Student Hub</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-protected="true">
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container nav-wrap">
+      <div style="display:flex; align-items:center; gap:12px">
+        <button class="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">
+          ☰
+        </button>
+        <a class="brand" href="home.html" aria-label="Student Hub Dashboard">
+          <span class="brand-icon">🎓</span>
+          <span class="brand-text">Student Hub</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <div style="display:flex; align-items:center; gap:8px" class="user-greeting-chip">
+          <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+          <span style="font-weight:700; font-size:0.92rem" data-student-name>Diya Palan</span>
+        </div>
+        <button class="icon-btn theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+          🌙
+        </button>
+        <button class="btn btn-secondary btn-sm logout-trigger" title="Log out">
+          <span>Logout</span>
+          <span>🚪</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    
+    <!-- Sidebar Navigation Drawer -->
+    <aside class="app-sidebar" aria-label="Student Portal Navigation">
+      <div>
+        <div class="sidebar-heading">Academic Portal</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="home.html">
+              <span class="link-icon">🏠</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="attendance.html">
+              <span class="link-icon">📊</span>
+              <span>Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="assignments.html">
+              <span class="link-icon">📝</span>
+              <span>Assignments</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="events.html">
+              <span class="link-icon">📅</span>
+              <span>Campus Events</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="fees.html">
+              <span class="link-icon">💳</span>
+              <span>Fee Details</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="results.html">
+              <span class="link-icon">🎯</span>
+              <span>Results & Grades</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="timetable.html">
+              <span class="link-icon">🗓️</span>
+              <span>Class Timetable</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="sidebar-heading">Community & Tools</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a class="sidebar-link" href="students.html">
+              <span class="link-icon">👥</span>
+              <span>Student Directory</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link active" href="profile.html">
+              <span class="link-icon">👤</span>
+              <span>My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="learning.html">
+              <span class="link-icon">📚</span>
+              <span>Learning Hub</span>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-link" href="index.html">
+              <span class="link-icon">ℹ️</span>
+              <span>Information Page</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-outline btn-sm logout-trigger" style="width:100%; justify-content:center">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <div class="container">
+        
+        <div class="page-header">
+          <div>
+            <span class="section-eyebrow">Personal Records</span>
+            <h1 class="page-title">Student Profile & Settings</h1>
+            <p class="page-subtitle">View and update your student account information stored in browser storage.</p>
+          </div>
+        </div>
+
+        <!-- Profile Overview Card -->
+        <div class="card profile-card" style="margin-bottom:28px">
+          <img src="student.jpg" alt="Student Profile Avatar" class="profile-avatar-large" onerror="this.src='hub.jpg'">
+          <div class="profile-details">
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+              <h2 style="font-size:1.6rem; font-weight:850" data-student-name>Diya Palan</h2>
+              <span class="badge badge-success">Active Enrolment</span>
+              <span class="badge badge-primary" data-student-enrollment>25CS053</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:1rem" data-student-email>25cs053@charusat.edu.in</p>
+            <p style="font-size:0.95rem; margin-top:4px">
+              <strong data-student-course>B.Tech Computer Engineering</strong> &bull; 
+              <span data-student-year>2nd Year</span> &bull; 
+              Division <span data-student-division>CE-A</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Editable Profile Form -->
+        <div class="card">
+          <h2 style="font-size:1.3rem; font-weight:800; margin-bottom:18px">Edit Profile Details</h2>
+          
+          <form id="profileEditForm" novalidate>
+            <div class="form-layout">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profName">Full Name</label>
+                  <input type="text" id="profName" class="form-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profEmail">Institute Email</label>
+                  <input type="email" id="profEmail" class="form-input" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profMobile">Mobile Number</label>
+                  <input type="tel" id="profMobile" class="form-input" required maxlength="10">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profCourse">Course Program</label>
+                  <select id="profCourse" class="form-select">
+                    <option value="B.Tech Computer Engineering">B.Tech Computer Engineering</option>
+                    <option value="B.Tech IT">B.Tech IT</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MCA">MCA</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label" for="profYear">Academic Year</label>
+                  <select id="profYear" class="form-select">
+                    <option value="1st Year">1st Year</option>
+                    <option value="2nd Year">2nd Year</option>
+                    <option value="3rd Year">3rd Year</option>
+                    <option value="4th Year">4th Year</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="profEnrolment">Enrolment Number (Read Only)</label>
+                  <input type="text" id="profEnrolment" class="form-input" value="25CS053" disabled style="opacity:0.75">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profBio">Personal Bio / Academic Interest</label>
+                <textarea id="profBio" class="form-input" rows="3" placeholder="Tell us about your interests..."></textarea>
+              </div>
+
+              <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:8px">
+                <button type="submit" class="btn btn-primary">
+                  💾 Save Profile to localStorage
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none; padding:0">
+      <p>Student Hub &bull; &copy; <span class="current-year"></span> All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
